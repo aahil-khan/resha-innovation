@@ -28,26 +28,6 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 group">
-          {/* Lotus/Mandala mark */}
-          <div className="w-9 h-9 relative">
-            <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-              <circle cx="18" cy="18" r="17" stroke="#1B5E3B" strokeWidth="1.5" opacity="0.3"/>
-              <circle cx="18" cy="18" r="11" stroke="#1B5E3B" strokeWidth="1.5" opacity="0.5"/>
-              <circle cx="18" cy="18" r="5" fill="#1B5E3B" opacity="0.8"/>
-              {/* Petals */}
-              {[0,45,90,135,180,225,270,315].map((angle, i) => (
-                <ellipse
-                  key={i}
-                  cx="18" cy="18" rx="3" ry="7"
-                  fill="#E87722"
-                  opacity="0.7"
-                  transform={`rotate(${angle} 18 18) translate(0 -9)`}
-                  style={{transformOrigin: '18px 18px'}}
-                />
-              ))}
-              <circle cx="18" cy="18" r="3" fill="#1B5E3B"/>
-            </svg>
-          </div>
           <span
             className="text-2xl text-forest group-hover:text-forest-light transition-colors"
             style={{ fontFamily: 'DM Serif Display, serif', letterSpacing: '-0.02em' }}

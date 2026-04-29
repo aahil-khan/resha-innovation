@@ -71,8 +71,8 @@ export function MokshaSection() {
           style={{ background: '#F5F0E8' }}
         >
           {/* Shredder SVG illustration */}
-          <div className="relative animate-float">
-            <svg width="300" height="280" viewBox="0 0 300 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <div className="relative animate-float w-full max-w-[500px]">
+            <svg className="w-full h-auto" viewBox="0 0 300 280" fill="none" xmlns="http://www.w3.org/2000/svg">
               {/* Machine body */}
               <rect x="60" y="40" width="180" height="160" rx="12" fill="#1B5E3B" opacity="0.08" stroke="#1B5E3B" strokeWidth="2"/>
               <rect x="75" y="55" width="150" height="130" rx="8" fill="white" stroke="#E8E5E0" strokeWidth="1.5"/>
