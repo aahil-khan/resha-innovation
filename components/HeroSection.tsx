@@ -26,44 +26,6 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-parchment/10 mix-blend-overlay"></div>
       </div>
 
-      {/* Background mandala rings */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-spin-slow">
-          <svg width="900" height="900" viewBox="0 0 900 900" fill="none" xmlns="http://www.w3.org/2000/svg" opacity="0.035">
-            <circle cx="450" cy="450" r="400" stroke="#1B5E3B" strokeWidth="1"/>
-            <circle cx="450" cy="450" r="320" stroke="#1B5E3B" strokeWidth="1"/>
-            <circle cx="450" cy="450" r="240" stroke="#1B5E3B" strokeWidth="1"/>
-            <circle cx="450" cy="450" r="160" stroke="#1B5E3B" strokeWidth="1"/>
-            <circle cx="450" cy="450" r="80" stroke="#1B5E3B" strokeWidth="1"/>
-            {[0,30,60,90,120,150,180,210,240,270,300,330].map((angle) => (
-              <line
-                key={angle}
-                x1="450" y1="50" x2="450" y2="850"
-                stroke="#1B5E3B" strokeWidth="0.5"
-                transform={`rotate(${angle} 450 450)`}
-              />
-            ))}
-          </svg>
-        </div>
-        {/* Corner ethnic accents */}
-        <div className="absolute top-0 left-0 w-64 h-64 opacity-5">
-          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 0 L200 0 L200 200" fill="#1B5E3B" opacity="0.3"/>
-            {[0,20,40,60,80,100].map((i) => (
-              <line key={i} x1="0" y1={i} x2={i} y2="0" stroke="#E87722" strokeWidth="1"/>
-            ))}
-          </svg>
-        </div>
-        <div className="absolute top-0 right-0 w-64 h-64 opacity-5" style={{transform: 'scaleX(-1)'}}>
-          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 0 L200 0 L200 200" fill="#1B5E3B" opacity="0.3"/>
-            {[0,20,40,60,80,100].map((i) => (
-              <line key={i} x1="0" y1={i} x2={i} y2="0" stroke="#E87722" strokeWidth="1"/>
-            ))}
-          </svg>
-        </div>
-      </div>
-
       {/* Content */}
       <div className="relative max-w-5xl mx-auto text-center z-10">
         {/* Overline badge */}
