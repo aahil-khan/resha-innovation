@@ -6,6 +6,7 @@ import { EthnicDivider } from './EthnicDivider';
 import { IconMapPin, IconFactory, IconClipboard, IconLeaf } from './Icons';
 import dynamic from 'next/dynamic';
 import { useMemo } from 'react';
+import { FadeIn } from './FadeIn';
 
 const TEASER_NODES = [
   { id: 'varanasi', lat: 25.32, lng: 82.97, city: 'Varanasi',  type: 'active' },
@@ -40,55 +41,63 @@ export function NetworkTeaserSection() {
   return (
     <section className="py-20 md:py-28 px-6" style={{ background: '#FAF7F2' }}>
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 mb-4">
-            <div className="w-6 h-px bg-saffron"/>
-            <span className="text-saffron text-xs font-semibold uppercase tracking-widest">Live Network</span>
-            <div className="w-6 h-px bg-saffron"/>
+        <FadeIn direction="up">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 mb-4">
+              <div className="w-6 h-px bg-saffron"/>
+              <span className="text-saffron text-xs font-semibold uppercase tracking-widest">Live Network</span>
+              <div className="w-6 h-px bg-saffron"/>
+            </div>
+            <h2 className="text-4xl md:text-6xl text-forest mb-4" style={{ fontFamily: 'Marcellus, serif' }}>
+              {network.title}
+            </h2>
+            <p className="text-dark-gray max-w-xl mx-auto leading-relaxed">{network.description}</p>
           </div>
-          <h2 className="text-4xl md:text-6xl text-forest mb-4" style={{ fontFamily: 'Marcellus, serif' }}>
-            {network.title}
-          </h2>
-          <p className="text-dark-gray max-w-xl mx-auto leading-relaxed">{network.description}</p>
-        </div>
+        </FadeIn>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* India Map */}
-          <div className="rounded-2xl p-2 relative overflow-hidden" style={{ background: '#F5F0E8', border: '1px solid #E8E5E0', height: '440px' }}>
-            <Map nodes={TEASER_NODES} zoom={4.2} interactive={false} />
+          <FadeIn direction="right" delay={200}>
+            <div className="rounded-2xl p-2 relative overflow-hidden" style={{ background: '#F5F0E8', border: '1px solid #E8E5E0', height: '440px' }}>
+              <Map nodes={TEASER_NODES} zoom={4.2} interactive={false} />
 
-            {/* Legend */}
-            <div className="absolute bottom-4 left-4 flex flex-col gap-2 bg-white/95 backdrop-blur-sm rounded-lg px-4 py-3 z-[400] shadow-sm border border-light-gray">
-              {[
-                { color: '#1B5E3B', label: 'Active Pilot' },
-                { color: '#F5A623', label: 'Processing Partner' },
-                { color: '#E87722', label: 'Onboarding' },
-              ].map((item) => (
-                <div key={item.label} className="flex items-center gap-2.5">
-                  <div className="w-3 h-3 rounded-full" style={{ background: item.color }}/>
-                  <span className="text-xs text-dark-gray font-medium uppercase tracking-wider">{item.label}</span>
-                </div>
-              ))}
+              {/* Legend */}
+              <div className="absolute bottom-4 left-4 flex flex-col gap-2 bg-white/95 backdrop-blur-sm rounded-lg px-4 py-3 z-[400] shadow-sm border border-light-gray">
+                {[
+                  { color: '#1B5E3B', label: 'Active Pilot' },
+                  { color: '#F5A623', label: 'Processing Partner' },
+                  { color: '#E87722', label: 'Onboarding' },
+                ].map((item) => (
+                  <div key={item.label} className="flex items-center gap-2.5">
+                    <div className="w-3 h-3 rounded-full" style={{ background: item.color }}/>
+                    <span className="text-xs text-dark-gray font-medium uppercase tracking-wider">{item.label}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
+          </FadeIn>
 
           {/* Stats + CTA */}
           <div className="space-y-4">
             {STATS.map((stat, i) => (
-              <div key={i} className="flex items-start gap-4 p-5 rounded-xl sacred-card transition-all hover:translate-x-1 duration-300">
-                <div className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(27,94,59,0.08)' }}>
-                  <stat.Icon size={20} color="#1B5E3B" />
+              <FadeIn key={i} direction="left" delay={200 + i * 100}>
+                <div className="flex items-start gap-4 p-5 rounded-xl sacred-card transition-all hover:translate-x-1 duration-300">
+                  <div className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(27,94,59,0.08)' }}>
+                    <stat.Icon size={20} color="#1B5E3B" />
+                  </div>
+                  <div>
+                    <p className="font-bold text-forest text-sm">{stat.label}</p>
+                    <p className="text-saffron font-bold text-lg" style={{ fontFamily: 'Marcellus, serif' }}>{stat.value}</p>
+                    <p className="text-dark-gray text-xs mt-0.5">{stat.note}</p>
+                  </div>
                 </div>
-                <div>
-                  <p className="font-bold text-forest text-sm">{stat.label}</p>
-                  <p className="text-saffron font-bold text-lg" style={{ fontFamily: 'Marcellus, serif' }}>{stat.value}</p>
-                  <p className="text-dark-gray text-xs mt-0.5">{stat.note}</p>
-                </div>
-              </div>
+              </FadeIn>
             ))}
-            <Link href="/network" className="btn-saffron w-full justify-center mt-6">
-              {network.cta_text}
-            </Link>
+            <FadeIn direction="up" delay={600}>
+              <Link href="/network" className="btn-saffron w-full justify-center mt-6">
+                {network.cta_text}
+              </Link>
+            </FadeIn>
           </div>
         </div>
       </div>
