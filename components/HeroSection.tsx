@@ -82,13 +82,13 @@ export function HeroSection() {
         <h1 className="mb-6 leading-tight animate-fade-in-up delay-100">
           <span
             className="block text-6xl md:text-8xl lg:text-9xl text-forest"
-            style={{ fontFamily: 'DM Serif Display, serif' }}
+            style={{ fontFamily: 'Marcellus, serif' }}
           >
             {hero.headline_line1}
           </span>
           <span
             className="block text-6xl md:text-8xl lg:text-9xl text-gradient-saffron"
-            style={{ fontFamily: 'DM Serif Display, serif', fontStyle: 'italic' }}
+            style={{ fontFamily: 'Marcellus, serif', fontStyle: 'italic' }}
           >
             {hero.headline_line2}
           </span>
@@ -115,13 +115,6 @@ export function HeroSection() {
           </Link>
         </div>
 
-        {/* Scroll indicator */}
-        <div className="mt-16 flex flex-col items-center gap-2 opacity-50 animate-float">
-          <span className="text-xs text-dark-gray uppercase tracking-widest">Scroll</span>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4A4A4A" strokeWidth="2">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7"/>
-          </svg>
-        </div>
       </div>
 
       {/* Bottom ethnic divider */}

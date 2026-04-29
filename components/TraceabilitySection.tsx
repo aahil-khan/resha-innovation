@@ -23,7 +23,7 @@ export function TraceabilitySection() {
           </div>
           <h2
             className="text-4xl md:text-6xl text-white mb-4"
-            style={{ fontFamily: 'DM Serif Display, serif' }}
+            style={{ fontFamily: 'Marcellus, serif' }}
           >
             {traceability.title}
           </h2>

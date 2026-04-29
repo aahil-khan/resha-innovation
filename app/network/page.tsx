@@ -26,7 +26,7 @@ export default function NetworkPage() {
         <div className="px-6 py-6" style={{ background: '#1B5E3B' }}>
           <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
-              <h1 className="text-3xl md:text-4xl text-white" style={{ fontFamily: 'DM Serif Display, serif' }}>
+              <h1 className="text-3xl md:text-4xl text-white" style={{ fontFamily: 'Marcellus, serif' }}>
                 RESHA Operations Network
               </h1>
               <p className="text-white/60 text-sm mt-1">
@@ -51,7 +51,7 @@ export default function NetworkPage() {
                   </div>
                   <p className="text-dark-gray text-xs font-medium uppercase tracking-wider">{card.label}</p>
                 </div>
-                <p className="text-2xl font-bold text-forest" style={{ fontFamily: 'DM Serif Display, serif' }}>
+                <p className="text-2xl font-bold text-forest" style={{ fontFamily: 'Marcellus, serif' }}>
                   {card.value}
                 </p>
                 <p className="text-dark-gray/60 text-xs mt-1">{card.note}</p>
@@ -67,7 +67,7 @@ export default function NetworkPage() {
             <div className="grid lg:grid-cols-5 gap-6 mb-8">
               <div className="lg:col-span-3 sacred-card overflow-hidden">
                 <div className="px-6 py-4 border-b border-light-gray">
-                  <h2 className="text-lg font-bold text-forest" style={{ fontFamily: 'DM Serif Display, serif' }}>Network Map</h2>
+                  <h2 className="text-lg font-bold text-forest" style={{ fontFamily: 'Marcellus, serif' }}>Network Map</h2>
                   <p className="text-dark-gray text-xs mt-0.5">Click a site node to view institution details</p>
                 </div>
                 <div className="p-4">
@@ -83,7 +83,7 @@ export default function NetworkPage() {
             <div className="grid lg:grid-cols-3 gap-6 mb-8">
               <div className="lg:col-span-2"><ActivityFeed /></div>
               <div className="rounded-2xl p-6" style={{ background: '#7B1C1C', color: 'white' }}>
-                <h3 className="text-lg mb-6" style={{ fontFamily: 'DM Serif Display, serif' }}>Network Overview</h3>
+                <h3 className="text-lg mb-6" style={{ fontFamily: 'Marcellus, serif' }}>Network Overview</h3>
                 <div className="space-y-5">
                   {[
                     { label: 'Active Shredder Units', value: '8' },
@@ -92,7 +92,7 @@ export default function NetworkPage() {
                   ].map((item, i) => (
                     <div key={i}>
                       <p className="text-white/50 text-xs mb-1">{item.label}</p>
-                      <p className="text-3xl font-bold text-white" style={{ fontFamily: 'DM Serif Display, serif' }}>{item.value}</p>
+                      <p className="text-3xl font-bold text-white" style={{ fontFamily: 'Marcellus, serif' }}>{item.value}</p>
                     </div>
                   ))}
                   <div className="pt-4 border-t border-white/10">
@@ -107,7 +107,7 @@ export default function NetworkPage() {
             {/* Batches */}
             <div>
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-xl font-bold text-forest" style={{ fontFamily: 'DM Serif Display, serif' }}>Traceability Records</h2>
+                <h2 className="text-xl font-bold text-forest" style={{ fontFamily: 'Marcellus, serif' }}>Traceability Records</h2>
                 <span className="text-xs text-dark-gray">Showing last 5 batches</span>
               </div>
               <BatchesTable />

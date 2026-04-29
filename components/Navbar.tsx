@@ -30,7 +30,7 @@ export function Navbar() {
         <Link href="/" className="flex items-center gap-3 group">
           <span
             className="text-2xl text-forest group-hover:text-forest-light transition-colors"
-            style={{ fontFamily: 'DM Serif Display, serif', letterSpacing: '-0.02em' }}
+            style={{ fontFamily: 'Marcellus, serif', letterSpacing: '-0.02em' }}
           >
             resha
           </span>

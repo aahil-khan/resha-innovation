@@ -16,7 +16,7 @@ export function SuccessState({ institutionName }: SuccessStateProps) {
         </svg>
       </div>
 
-      <h2 className="text-4xl text-forest mb-2" style={{ fontFamily: 'DM Serif Display, serif' }}>
+      <h2 className="text-4xl text-forest mb-2" style={{ fontFamily: 'Marcellus, serif' }}>
         Request Received
       </h2>
       <p className="text-dark-gray mb-10">

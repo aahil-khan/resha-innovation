@@ -25,7 +25,7 @@ export function CTASection() {
           </svg>
         </div>
 
-        <h2 className="text-4xl md:text-6xl text-white mb-6 leading-tight" style={{ fontFamily: 'DM Serif Display, serif' }}>
+        <h2 className="text-4xl md:text-6xl text-white mb-6 leading-tight" style={{ fontFamily: 'Marcellus, serif' }}>
           {cta.title}
         </h2>
         <p className="text-white/85 text-lg mb-10 max-w-2xl mx-auto leading-relaxed">

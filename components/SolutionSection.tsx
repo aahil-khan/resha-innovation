@@ -14,7 +14,7 @@ export function SolutionSection() {
             <span className="text-saffron text-xs font-semibold uppercase tracking-widest">Our Process</span>
             <div className="w-6 h-px bg-saffron"/>
           </div>
-          <h2 className="text-4xl md:text-6xl text-forest mb-4" style={{ fontFamily: 'DM Serif Display, serif' }}>
+          <h2 className="text-4xl md:text-6xl text-forest mb-4" style={{ fontFamily: 'Marcellus, serif' }}>
             The Dignity-First Approach
           </h2>
           <p className="text-dark-gray max-w-xl mx-auto leading-relaxed">
@@ -54,7 +54,7 @@ export function SolutionSection() {
         </div>
 
         <div className="mt-16 p-8 rounded-2xl text-center" style={{ background: 'rgba(245,166,35,0.06)', borderLeft: '4px solid #F5A623' }}>
-          <p className="text-2xl md:text-3xl text-forest italic mb-3" style={{ fontFamily: 'DM Serif Display, serif' }}>
+          <p className="text-2xl md:text-3xl text-forest italic mb-3" style={{ fontFamily: 'Marcellus, serif' }}>
             "Sacred cloth completes its spiritual journey — not in a river, but in a new life."
           </p>
           <p className="text-dark-gray text-sm">— RESHA Founding Principle</p>

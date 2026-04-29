@@ -45,7 +45,7 @@
 
 @theme inline {
   --font-sans: var(--font-sans, 'Outfit', sans-serif);
-  --font-display: var(--font-display, 'DM Serif Display', serif);
+  --font-display: var(--font-display, 'Marcellus', serif);
   --font-mono: 'Courier New', monospace;
 
   --color-forest: #1B5E3B;
@@ -102,7 +102,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'DM Serif Display', serif;
+    font-family: 'Marcellus', serif;
     font-weight: 400;
     letter-spacing: -0.01em;
   }
@@ -180,7 +180,7 @@
   .delay-500 { animation-delay: 500ms; }
   .delay-600 { animation-delay: 600ms; }
 
-  .font-display { font-family: 'DM Serif Display', serif; }
+  .font-display { font-family: 'Marcellus', serif; }
   .font-sans    { font-family: 'Outfit', sans-serif; }
   .font-mono    { font-family: 'Courier New', monospace; }
 

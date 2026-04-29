@@ -77,7 +77,7 @@ export function BatchesTable() {
     <>
       <div className="sacred-card overflow-hidden">
         <div className="px-6 py-4 border-b border-light-gray">
-          <h3 className="text-lg font-bold text-forest" style={{ fontFamily: 'DM Serif Display, serif' }}>
+          <h3 className="text-lg font-bold text-forest" style={{ fontFamily: 'Marcellus, serif' }}>
             Recent Batches
           </h3>
         </div>

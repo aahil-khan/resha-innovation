@@ -30,7 +30,7 @@ export function NodeDetail({ nodeId }: NodeDetailProps) {
               <line x1="15" x2="15" y1="6" y2="21"/>
             </svg>
           </div>
-        <p className="text-forest font-semibold mb-2" style={{ fontFamily: 'DM Serif Display, serif' }}>
+        <p className="text-forest font-semibold mb-2" style={{ fontFamily: 'Marcellus, serif' }}>
           Select a site
         </p>
         <p className="text-dark-gray text-sm">Click on a node on the map to see institution details.</p>
@@ -52,7 +52,7 @@ export function NodeDetail({ nodeId }: NodeDetailProps) {
             <p className="text-white/60 text-xs uppercase tracking-widest mb-1">Institution</p>
             <h3
               className="text-white text-lg leading-snug"
-              style={{ fontFamily: 'DM Serif Display, serif' }}
+              style={{ fontFamily: 'Marcellus, serif' }}
             >
               {node.name}
             </h3>

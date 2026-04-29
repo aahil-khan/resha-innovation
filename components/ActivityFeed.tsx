@@ -14,7 +14,7 @@ export function ActivityFeed() {
   return (
     <div className="sacred-card p-6 h-full">
       <div className="flex items-center justify-between mb-6">
-        <h3 className="text-lg font-bold text-forest" style={{ fontFamily: 'DM Serif Display, serif' }}>
+        <h3 className="text-lg font-bold text-forest" style={{ fontFamily: 'Marcellus, serif' }}>
           Recent Activity
         </h3>
         <div className="flex items-center gap-1.5">

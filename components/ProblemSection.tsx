@@ -15,7 +15,7 @@ export function ProblemSection() {
               <span className="text-saffron text-xs font-semibold uppercase tracking-widest">The Challenge</span>
               <div className="w-6 h-px bg-saffron"/>
             </div>
-            <h2 className="text-4xl md:text-6xl text-white mb-6" style={{ fontFamily: 'DM Serif Display, serif' }}>
+            <h2 className="text-4xl md:text-6xl text-white mb-6" style={{ fontFamily: 'Marcellus, serif' }}>
               {problem.title}
             </h2>
           </div>
@@ -25,7 +25,7 @@ export function ProblemSection() {
             {problem.stats.map((stat, index) => (
               <div key={index} className="border border-white/10 rounded-xl p-8 text-center hover:border-saffron/40 transition-all duration-300 hover:bg-white/5">
                 <p className="text-5xl md:text-6xl mb-3" style={{
-                  fontFamily: 'DM Serif Display, serif',
+                  fontFamily: 'Marcellus, serif',
                   background: 'linear-gradient(135deg, #E87722, #F5A623)',
                   WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
                 }}>{stat.number}</p>

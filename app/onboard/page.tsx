@@ -49,7 +49,7 @@ export default function OnboardPage() {
               <span className="text-saffron text-xs font-semibold uppercase tracking-widest">Pilot Onboarding</span>
               <div className="w-6 h-px bg-saffron"/>
             </div>
-            <h1 className="text-5xl md:text-6xl text-forest mb-4" style={{ fontFamily: 'DM Serif Display, serif' }}>
+            <h1 className="text-5xl md:text-6xl text-forest mb-4" style={{ fontFamily: 'Marcellus, serif' }}>
               Partner With RESHA
             </h1>
             <p className="text-dark-gray text-lg leading-relaxed">
@@ -70,7 +70,7 @@ export default function OnboardPage() {
                     <div className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4" style={{ background: 'rgba(27,94,59,0.08)' }}>
                       <card.Icon size={22} color="#1B5E3B" />
                     </div>
-                    <h3 className="text-forest font-bold mb-2" style={{ fontFamily: 'DM Serif Display, serif', fontSize: '1.1rem' }}>
+                    <h3 className="text-forest font-bold mb-2" style={{ fontFamily: 'Marcellus, serif', fontSize: '1.1rem' }}>
                       {card.title}
                     </h3>
                     <p className="text-dark-gray text-sm leading-relaxed">{card.description}</p>
@@ -81,7 +81,7 @@ export default function OnboardPage() {
               {/* Form card */}
               <div className="rounded-2xl overflow-hidden shadow-sm mb-10" style={{ background: 'white', border: '1px solid #E8E5E0' }}>
                 <div className="px-8 py-6" style={{ background: '#FAF7F2', borderBottom: '1px solid #E8E5E0' }}>
-                  <h2 className="text-2xl text-forest mb-1" style={{ fontFamily: 'DM Serif Display, serif' }}>
+                  <h2 className="text-2xl text-forest mb-1" style={{ fontFamily: 'Marcellus, serif' }}>
                     Onboarding Request Form
                   </h2>
                   <p className="text-dark-gray text-sm">All fields marked * are required.</p>

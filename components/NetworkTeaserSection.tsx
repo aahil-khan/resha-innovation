@@ -46,7 +46,7 @@ export function NetworkTeaserSection() {
             <span className="text-saffron text-xs font-semibold uppercase tracking-widest">Live Network</span>
             <div className="w-6 h-px bg-saffron"/>
           </div>
-          <h2 className="text-4xl md:text-6xl text-forest mb-4" style={{ fontFamily: 'DM Serif Display, serif' }}>
+          <h2 className="text-4xl md:text-6xl text-forest mb-4" style={{ fontFamily: 'Marcellus, serif' }}>
             {network.title}
           </h2>
           <p className="text-dark-gray max-w-xl mx-auto leading-relaxed">{network.description}</p>
@@ -81,7 +81,7 @@ export function NetworkTeaserSection() {
                 </div>
                 <div>
                   <p className="font-bold text-forest text-sm">{stat.label}</p>
-                  <p className="text-saffron font-bold text-lg" style={{ fontFamily: 'DM Serif Display, serif' }}>{stat.value}</p>
+                  <p className="text-saffron font-bold text-lg" style={{ fontFamily: 'Marcellus, serif' }}>{stat.value}</p>
                   <p className="text-dark-gray text-xs mt-0.5">{stat.note}</p>
                 </div>
               </div>

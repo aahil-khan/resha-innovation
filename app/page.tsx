@@ -42,7 +42,7 @@ export default function Home() {
                   ))}
                 </svg>
               </div>
-              <span className="text-xl" style={{ fontFamily: 'DM Serif Display, serif', color: '#F5F0E8' }}>resha</span>
+              <span className="text-xl" style={{ fontFamily: 'Marcellus, serif', color: '#F5F0E8' }}>resha</span>
             </div>
             <div className="text-center">
               <p className="text-sm" style={{ color: 'rgba(245,240,232,0.7)' }}>© 2025 RESHA. All rights reserved.</p>

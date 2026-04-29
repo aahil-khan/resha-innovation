@@ -29,14 +29,14 @@ export function MokshaSection() {
 
             <h2
               className="text-4xl md:text-5xl text-white mb-3"
-              style={{ fontFamily: 'DM Serif Display, serif' }}
+              style={{ fontFamily: 'Marcellus, serif' }}
             >
               {moksha.title}
             </h2>
             <p
               className="text-xl mb-6 italic"
               style={{
-                fontFamily: 'DM Serif Display, serif',
+                fontFamily: 'Marcellus, serif',
                 background: 'linear-gradient(135deg, #E87722, #F5A623)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
@@ -71,7 +71,7 @@ export function MokshaSection() {
           style={{ background: '#F5F0E8' }}
         >
           {/* Shredder SVG illustration */}
-          <div className="relative animate-float w-full max-w-[500px]">
+          <div className="relative animate-float w-full max-w-[650px]">
             <svg className="w-full h-auto" viewBox="0 0 300 280" fill="none" xmlns="http://www.w3.org/2000/svg">
               {/* Machine body */}
               <rect x="60" y="40" width="180" height="160" rx="12" fill="#1B5E3B" opacity="0.08" stroke="#1B5E3B" strokeWidth="2"/>
@@ -122,7 +122,7 @@ export function MokshaSection() {
 
               {/* RESHA label */}
               <rect x="90" y="78" width="120" height="14" rx="3" fill="#1B5E3B" opacity="0.06"/>
-              <text x="150" y="88" textAnchor="middle" fontSize="8" fill="#1B5E3B" fontFamily="DM Serif Display,serif" fontWeight="400" opacity="0.7">Moksha Shredder™ MS-007</text>
+              <text x="150" y="88" textAnchor="middle" fontSize="8" fill="#1B5E3B" fontFamily="Marcellus,serif" fontWeight="400" opacity="0.7">Moksha Shredder™ MS-007</text>
 
               {/* Certified badge */}
               <circle cx="245" cy="60" r="18" fill="#1B5E3B" opacity="0.9"/>

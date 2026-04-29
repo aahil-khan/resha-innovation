@@ -84,7 +84,7 @@ export default function DynamicMap({ nodes, selectedNodeId, onNodeSelect, zoom =
         >
           <Popup>
             <div className="font-sans min-w-[120px] text-center p-1">
-              <p className="font-bold text-forest mb-1 text-base" style={{ fontFamily: 'DM Serif Display, serif' }}>{node.city}</p>
+              <p className="font-bold text-forest mb-1 text-base" style={{ fontFamily: 'Marcellus, serif' }}>{node.city}</p>
               <p className="text-[10px] uppercase tracking-wider text-dark-gray font-semibold">
                 {node.type === 'active' ? 'Active Pilot' : node.type === 'partner' ? 'Processing Partner' : 'Onboarding'}
               </p>

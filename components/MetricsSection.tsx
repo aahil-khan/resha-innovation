@@ -47,7 +47,7 @@ export function MetricsSection() {
             <span className="text-saffron text-xs font-semibold uppercase tracking-widest">ESG Impact</span>
             <div className="w-6 h-px bg-saffron"/>
           </div>
-          <h2 className="text-4xl md:text-6xl text-forest mb-4" style={{ fontFamily: 'DM Serif Display, serif' }}>
+          <h2 className="text-4xl md:text-6xl text-forest mb-4" style={{ fontFamily: 'Marcellus, serif' }}>
             {metrics.title}
           </h2>
           <p className="text-dark-gray max-w-lg mx-auto">{metrics.description}</p>
@@ -62,7 +62,7 @@ export function MetricsSection() {
                   {IconComponent && <IconComponent size={22} color="#1B5E3B" />}
                 </div>
                 <div className="text-4xl md:text-5xl font-bold mb-2" style={{
-                  fontFamily: 'DM Serif Display, serif',
+                  fontFamily: 'Marcellus, serif',
                   background: 'linear-gradient(135deg, #E87722, #F5A623)',
                   WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
                 }}>
@@ -78,7 +78,7 @@ export function MetricsSection() {
           <div className="w-12 h-12 mx-auto mb-4 opacity-60">
             <IconLotus size={48} color="white" strokeWidth={1.2} />
           </div>
-          <p className="text-xl md:text-2xl text-white italic mb-3" style={{ fontFamily: 'DM Serif Display, serif' }}>
+          <p className="text-xl md:text-2xl text-white italic mb-3" style={{ fontFamily: 'Marcellus, serif' }}>
             Every kilogram diverted is a prayer answered — and a river protected.
           </p>
           <p className="text-white/60 text-sm">
