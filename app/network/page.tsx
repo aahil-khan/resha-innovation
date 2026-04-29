@@ -7,6 +7,7 @@ import { NodeDetail } from '@/components/NodeDetail';
 import { ActivityFeed } from '@/components/ActivityFeed';
 import { BatchesTable } from '@/components/BatchesTable';
 import { IconMapPin, IconScissors, IconFactory, IconClipboard } from '@/components/Icons';
+import { Footer } from '@/components/Footer';
 
 const METRIC_CARDS = [
   { label: 'Active Pilot Sites', value: '8', Icon: IconMapPin, note: 'Across 3 states' },
@@ -115,9 +116,7 @@ export default function NetworkPage() {
           </div>
         </div>
       </main>
-      <footer style={{ background: '#1a1a1a', color: '#F5F0E8' }} className="py-10 px-6 text-center">
-        <p className="text-sm text-white/60">© 2025 RESHA — Reverence in Recycling. Pilot Stage | India</p>
-      </footer>
+      <Footer />
     </>
   );
 }

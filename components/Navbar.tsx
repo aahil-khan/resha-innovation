@@ -27,7 +27,8 @@ export function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 group">
+        <Link href="/" className="flex items-center gap-2 group">
+          <img src="/resha-logo.svg" alt="RESHA Logo" className="h-10 w-auto transition-transform duration-300 group-hover:scale-110" />
           <span
             className="text-2xl text-forest group-hover:text-forest-light transition-colors"
             style={{ fontFamily: 'Marcellus, serif', letterSpacing: '-0.02em' }}
