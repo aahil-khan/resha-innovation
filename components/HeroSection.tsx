@@ -18,7 +18,7 @@ export function HeroSection() {
           muted
           playsInline
           className="absolute min-w-full min-h-full object-cover"
-          style={{ opacity: 0.75 }}
+          style={{ opacity: 1 }}
         >
           <source src="/animation.mp4" type="video/mp4" />
         </video>
