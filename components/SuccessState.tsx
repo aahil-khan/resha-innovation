@@ -4,89 +4,105 @@ interface SuccessStateProps {
   institutionName?: string;
 }
 
+const requestId = `RQ-2025-${String(Math.floor(Math.random() * 900) + 100).padStart(4, '0')}`;
+
 export function SuccessState({ institutionName }: SuccessStateProps) {
   return (
-    <div className="text-center py-16">
-      {/* Success icon */}
-      <div className="inline-flex items-center justify-center w-24 h-24 bg-saffron/20 rounded-full mb-8">
-        <svg
-          className="w-12 h-12 text-saffron"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M5 13l4 4L19 7"
-          />
+    <div className="text-center py-8">
+      {/* Check icon */}
+      <div
+        className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6"
+        style={{ background: 'linear-gradient(135deg, #1B5E3B, #2a7a4f)', boxShadow: '0 8px 32px rgba(27,94,59,0.3)' }}
+      >
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="7,18 14,26 29,10"/>
         </svg>
       </div>
 
-      <h2 className="text-4xl font-sans font-bold text-forest mb-4">
-        Welcome to RESHA!
+      <h2
+        className="text-4xl text-forest mb-2"
+        style={{ fontFamily: 'DM Serif Display, serif' }}
+      >
+        Request Received
       </h2>
-
-      <p className="text-lg text-dark-gray font-sans mb-2">
-        {institutionName && `Thank you, ${institutionName}!`}
+      <p className="text-dark-gray mb-10">
+        Thank you{institutionName ? `, ${institutionName}` : ''}. Our coordinator will be in touch shortly.
       </p>
 
-      <p className="text-dark-gray font-sans max-w-2xl mx-auto mb-12">
-        Your application has been submitted successfully. Our team will review your information and contact you shortly with next steps.
-      </p>
-
-      {/* Key next steps */}
-      <div className="grid md:grid-cols-3 gap-6 mb-12 max-w-3xl mx-auto">
-        <div className="bg-light-gray p-6 rounded-lg">
-          <div className="text-3xl mb-3">📧</div>
-          <h3 className="font-sans font-bold text-forest mb-2">Confirmation Email</h3>
-          <p className="text-sm text-dark-gray font-sans">
-            Check your inbox for our welcome email
-          </p>
+      {/* Receipt card */}
+      <div
+        className="rounded-2xl overflow-hidden text-left max-w-lg mx-auto shadow-lg mb-8"
+        style={{ background: '#F5F0E8', borderLeft: '4px solid #E87722' }}
+      >
+        {/* Card header */}
+        <div
+          className="px-6 py-4 flex items-center gap-3"
+          style={{ background: '#FAF7F2', borderBottom: '1px solid #E8E5E0' }}
+        >
+          <div className="w-2 h-2 rounded-full bg-saffron"/>
+          <span
+            className="text-saffron font-bold text-sm tracking-widest"
+            style={{ fontFamily: 'Courier New, monospace' }}
+          >
+            REQUEST ID: {requestId}
+          </span>
         </div>
 
-        <div className="bg-light-gray p-6 rounded-lg">
-          <div className="text-3xl mb-3">📞</div>
-          <h3 className="font-sans font-bold text-forest mb-2">We&apos;ll Be In Touch</h3>
-          <p className="text-sm text-dark-gray font-sans">
-            Our team will call you within 24 hours
-          </p>
+        <div className="p-6 space-y-3">
+          {[
+            { label: 'Status', value: 'Under Review' },
+            { label: 'Est. Response', value: 'Within 7 business days' },
+            { label: 'Assigned To', value: 'Priya Sharma — North India Region' },
+          ].map((row, i) => (
+            <div key={i} className="flex gap-4 pb-3 border-b border-light-gray last:border-0">
+              <span
+                className="text-dark-gray text-xs uppercase tracking-wider w-32 flex-shrink-0 pt-0.5"
+                style={{ fontFamily: 'Courier New, monospace' }}
+              >
+                {row.label}:
+              </span>
+              <span className="text-forest text-sm font-medium">{row.value}</span>
+            </div>
+          ))}
         </div>
 
-        <div className="bg-light-gray p-6 rounded-lg">
-          <div className="text-3xl mb-3">🌍</div>
-          <h3 className="font-sans font-bold text-forest mb-2">Network Access</h3>
-          <p className="text-sm text-dark-gray font-sans">
-            Get access to the full RESHA network
+        {/* Projected impact */}
+        <div
+          className="px-6 py-5"
+          style={{ background: 'rgba(27,94,59,0.05)', borderTop: '1px solid #E8E5E0' }}
+        >
+          <p className="text-forest text-xs font-bold uppercase tracking-wider mb-3">
+            📊 Projected Impact (if onboarded)
           </p>
+          <div className="space-y-2">
+            {[
+              '~120 kg/month diverted from rivers',
+              '1,440 kg/year circular material created',
+              'Qualifies for RESHA ESG Partner Certificate',
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-saffron flex-shrink-0"/>
+                <span className="text-dark-gray text-sm">{item}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* CTA Buttons */}
-      <div className="flex flex-col sm:flex-row gap-4 justify-center">
+      {/* Actions */}
+      <div className="flex flex-col sm:flex-row gap-3 justify-center">
         <Link
           href="/"
-          className="px-8 py-4 bg-forest text-parchment rounded-lg font-sans font-semibold hover:bg-saffron transition-all duration-300 text-lg"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-forest text-white rounded-xl font-semibold text-sm hover:bg-forest-dark transition-all duration-300"
         >
-          Return Home
+          ← Back to Home
         </Link>
         <Link
           href="/network"
-          className="px-8 py-4 border-2 border-forest text-forest rounded-lg font-sans font-semibold hover:bg-forest hover:text-parchment transition-all duration-300 text-lg"
+          className="inline-flex items-center gap-2 px-6 py-3 border-2 border-forest text-forest rounded-xl font-semibold text-sm hover:bg-forest hover:text-white transition-all duration-300"
         >
           Explore Network
         </Link>
-      </div>
-
-      {/* Contact info */}
-      <div className="mt-16 p-8 bg-parchment/50 rounded-lg max-w-2xl mx-auto border border-light-gray">
-        <p className="text-dark-gray font-sans mb-2">
-          Questions? Contact our team:
-        </p>
-        <p className="text-forest font-sans font-bold text-lg">
-          hello@resha.org
-        </p>
       </div>
     </div>
   );

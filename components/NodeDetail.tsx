@@ -2,84 +2,81 @@
 
 import { NETWORK_NODES } from '@/lib/constants';
 
+type NetworkNode = typeof NETWORK_NODES[number];
+
 interface NodeDetailProps {
   nodeId?: string;
 }
 
+const TYPE_LABELS = {
+  active: { label: 'Active Pilot', className: 'badge-active' },
+  partner: { label: 'Processing Partner', className: 'badge-partner' },
+  onboarding: { label: 'Onboarding', className: 'badge-onboarding' },
+};
+
 export function NodeDetail({ nodeId }: NodeDetailProps) {
-  const node = NETWORK_NODES.find((n) => n.id === nodeId);
+  const node: NetworkNode | undefined = nodeId ? NETWORK_NODES.find((n) => n.id === nodeId) : undefined;
 
   if (!node) {
     return (
-      <div className="bg-light-gray rounded-lg p-8 text-center border border-light-gray">
-        <p className="text-dark-gray font-sans">Select a node to view details</p>
+      <div
+        className="rounded-2xl border border-dashed border-light-gray p-8 h-full flex flex-col items-center justify-center text-center min-h-[300px]"
+        style={{ background: '#FAF7F2' }}
+      >
+        <div className="text-4xl mb-4 opacity-40">🗺️</div>
+        <p className="text-forest font-semibold mb-2" style={{ fontFamily: 'DM Serif Display, serif' }}>
+          Select a site
+        </p>
+        <p className="text-dark-gray text-sm">Click on a node on the map to see institution details.</p>
       </div>
     );
   }
 
-  const typeEmoji: Record<string, string> = {
-    processing: '⚙️',
-    hub: '🔄',
-    distribution: '📦',
-  };
+  const typeInfo = TYPE_LABELS[node.type as keyof typeof TYPE_LABELS];
 
   return (
-    <div className="bg-white rounded-lg border-2 border-saffron p-8 shadow-lg">
+    <div
+      className="rounded-2xl overflow-hidden shadow-lg"
+      style={{ background: '#F5F0E8', borderLeft: '4px solid #1B5E3B' }}
+    >
       {/* Header */}
-      <div className="flex items-start justify-between mb-6">
-        <div>
-          <div className="flex items-center gap-3 mb-2">
-            <span className="text-3xl">{typeEmoji[node.type] || '📍'}</span>
-            <h2 className="text-2xl font-sans font-bold text-forest">{node.city}</h2>
+      <div className="px-6 py-5" style={{ background: '#1B5E3B' }}>
+        <div className="flex items-start justify-between gap-3">
+          <div>
+            <p className="text-white/60 text-xs uppercase tracking-widest mb-1">Institution</p>
+            <h3
+              className="text-white text-lg leading-snug"
+              style={{ fontFamily: 'DM Serif Display, serif' }}
+            >
+              {node.name}
+            </h3>
           </div>
-          <p className="text-dark-gray font-sans text-sm">{node.name}</p>
-        </div>
-        <div className="bg-saffron/20 px-4 py-2 rounded text-saffron font-semibold text-sm font-sans capitalize">
-          {node.type}
-        </div>
-      </div>
-
-      {/* Divider */}
-      <div className="border-t border-light-gray mb-6" />
-
-      {/* Stats Grid */}
-      <div className="grid md:grid-cols-3 gap-6 mb-6">
-        <div>
-          <p className="text-dark-gray font-sans text-sm mb-2">Active Members</p>
-          <p className="text-3xl font-sans font-bold text-forest">{node.members}</p>
-        </div>
-        <div>
-          <p className="text-dark-gray font-sans text-sm mb-2">Devices Processed</p>
-          <p className="text-3xl font-sans font-bold text-saffron">{node.devices_processed.toLocaleString()}</p>
-        </div>
-        <div>
-          <p className="text-dark-gray font-sans text-sm mb-2">CO₂ Saved (tons)</p>
-          <p className="text-3xl font-sans font-bold text-forest">{node.co2_saved}</p>
+          <span className={typeInfo?.className || 'badge-active'}>
+            {typeInfo?.label || node.type}
+          </span>
         </div>
       </div>
 
-      {/* Progress bar example */}
-      <div className="bg-light-gray rounded p-4">
-        <p className="text-sm font-sans text-dark-gray mb-2">Processing Capacity</p>
-        <div className="w-full bg-light-gray rounded-full h-2">
-          <div
-            className="bg-saffron h-2 rounded-full transition-all"
-            style={{ width: `${(node.members / 70) * 100}%` }}
-          />
-        </div>
-        <p className="text-xs text-dark-gray font-sans mt-2">
-          {Math.round((node.members / 70) * 100)}% of network capacity
-        </p>
-      </div>
-
-      {/* Action buttons */}
-      <div className="flex gap-3 mt-6">
-        <button className="flex-1 px-4 py-3 bg-forest text-parchment rounded-lg font-sans font-semibold hover:bg-saffron transition-colors text-sm">
-          Learn More
-        </button>
-        <button className="flex-1 px-4 py-3 border-2 border-forest text-forest rounded-lg font-sans font-semibold hover:bg-forest hover:text-parchment transition-colors text-sm">
-          Connect
-        </button>
+      {/* Body */}
+      <div className="p-6 space-y-3">
+        {[
+          { label: 'City', value: `${node.city}, ${node.state}` },
+          { label: 'Type', value: node.institution_type },
+          { label: 'Status', value: node.status },
+          node.installed && { label: 'Installed', value: node.installed },
+          node.shredder && { label: 'Shredder', value: `${node.shredder} | Capacity: ${node.capacity}` },
+          node.waste_diverted > 0 && { label: 'Waste Diverted', value: `${node.waste_diverted.toLocaleString('en-IN')} kg total` },
+          node.last_pickup && { label: 'Last Pickup', value: node.last_pickup },
+          node.partner && { label: 'Assigned Partner', value: node.partner },
+          node.batches && { label: 'Traceability', value: node.batches },
+        ].filter(Boolean).map((row: any, i) => (
+          <div key={i} className="flex gap-3 pb-3 border-b border-light-gray last:border-0">
+            <span className="text-dark-gray text-xs uppercase tracking-wider w-28 flex-shrink-0 pt-0.5" style={{ fontFamily: 'Courier New, monospace' }}>
+              {row.label}:
+            </span>
+            <span className="text-forest text-sm font-medium leading-tight">{row.value}</span>
+          </div>
+        ))}
       </div>
     </div>
   );

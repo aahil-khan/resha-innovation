@@ -5,100 +5,117 @@ import { Navbar } from '@/components/Navbar';
 import { OnboardingForm } from '@/components/OnboardingForm';
 import { SuccessState } from '@/components/SuccessState';
 
+const WHY_PARTNER = [
+  {
+    icon: '🏛️',
+    title: 'Consecrated Processing',
+    description: 'Cloth is processed on-site within temple premises — it never leaves as intact fabric.',
+  },
+  {
+    icon: '📊',
+    title: 'ESG Certification',
+    description: 'Receive a RESHA ESG Partner Certificate with full traceability reporting.',
+  },
+  {
+    icon: '🌿',
+    title: 'Circular Impact',
+    description: 'Each kg diverted creates recycled textile fiber and prevents river contamination.',
+  },
+];
+
 export default function OnboardPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [institutionName, setInstitutionName] = useState('');
 
-  const handleSuccess = () => {
-    setIsSubmitted(true);
-  };
-
-  const handleFormChange = (formData: any) => {
-    setInstitutionName(formData.institution_name || '');
-  };
-
   return (
     <>
       <Navbar />
-      <main className="pt-24 pb-16 px-6 bg-parchment min-h-screen">
-        <div className="max-w-3xl mx-auto">
+      <main className="min-h-screen pb-16" style={{ background: '#F5F0E8' }}>
+        {/* Hero */}
+        <div
+          className="px-6 pt-32 pb-16 text-center relative overflow-hidden"
+          style={{ background: '#F5F0E8' }}
+        >
+          {/* Background mandala */}
+          <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-5">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+              <svg width="700" height="700" viewBox="0 0 700 700" fill="none">
+                {[50,100,150,200,250,300].map((r) => (
+                  <circle key={r} cx="350" cy="350" r={r} stroke="#1B5E3B" strokeWidth="1"/>
+                ))}
+              </svg>
+            </div>
+          </div>
+
+          <div className="relative max-w-2xl mx-auto">
+            <div className="inline-flex items-center gap-2 mb-4">
+              <div className="w-6 h-px bg-saffron"/>
+              <span className="text-saffron text-xs font-semibold uppercase tracking-widest">Pilot Onboarding</span>
+              <div className="w-6 h-px bg-saffron"/>
+            </div>
+            <h1
+              className="text-5xl md:text-6xl text-forest mb-4"
+              style={{ fontFamily: 'DM Serif Display, serif' }}
+            >
+              Partner With RESHA
+            </h1>
+            <p className="text-dark-gray text-lg leading-relaxed">
+              Request a Moksha Shredder installation for your institution. Our team will conduct a site assessment and pilot proposal within 7 business days.
+            </p>
+          </div>
+        </div>
+
+        <div className="px-6 max-w-4xl mx-auto">
           {isSubmitted ? (
             <SuccessState institutionName={institutionName} />
           ) : (
             <>
-              {/* Header */}
-              <div className="mb-12 text-center">
-                <h1 className="text-5xl font-sans font-bold text-forest mb-4">
-                  Join RESHA Today
-                </h1>
-                <p className="text-lg text-dark-gray font-sans max-w-2xl mx-auto">
-                  Become part of India&apos;s circular economy revolution. Connect with institutions, processors, and innovators building a sustainable electronics future.
-                </p>
+              {/* Why partner cards */}
+              <div className="grid md:grid-cols-3 gap-5 mb-10">
+                {WHY_PARTNER.map((card, i) => (
+                  <div key={i} className="sacred-card p-6 text-center">
+                    <div className="text-3xl mb-3">{card.icon}</div>
+                    <h3 className="text-forest font-bold mb-2" style={{ fontFamily: 'DM Serif Display, serif', fontSize: '1.1rem' }}>
+                      {card.title}
+                    </h3>
+                    <p className="text-dark-gray text-sm leading-relaxed">{card.description}</p>
+                  </div>
+                ))}
               </div>
 
-              {/* Why Join Section */}
-              <div className="grid md:grid-cols-3 gap-6 mb-16">
-                <div className="bg-white p-6 rounded-lg border border-light-gray">
-                  <div className="text-3xl mb-3">🌍</div>
-                  <h3 className="font-sans font-bold text-forest mb-2">Scale Impact</h3>
-                  <p className="text-sm text-dark-gray font-sans">
-                    Access a network of 240+ organizations transforming e-waste
-                  </p>
+              {/* Form card */}
+              <div
+                className="rounded-2xl overflow-hidden shadow-sm mb-10"
+                style={{ background: 'white', border: '1px solid #E8E5E0' }}
+              >
+                <div
+                  className="px-8 py-6"
+                  style={{ background: '#FAF7F2', borderBottom: '1px solid #E8E5E0' }}
+                >
+                  <h2
+                    className="text-2xl text-forest mb-1"
+                    style={{ fontFamily: 'DM Serif Display, serif' }}
+                  >
+                    Onboarding Request Form
+                  </h2>
+                  <p className="text-dark-gray text-sm">All fields marked * are required.</p>
                 </div>
-
-                <div className="bg-white p-6 rounded-lg border border-light-gray">
-                  <div className="text-3xl mb-3">📊</div>
-                  <h3 className="font-sans font-bold text-forest mb-2">Track Progress</h3>
-                  <p className="text-sm text-dark-gray font-sans">
-                    Monitor your impact with real-time traceability and reporting
-                  </p>
-                </div>
-
-                <div className="bg-white p-6 rounded-lg border border-light-gray">
-                  <div className="text-3xl mb-3">💼</div>
-                  <h3 className="font-sans font-bold text-forest mb-2">Revenue Potential</h3>
-                  <p className="text-sm text-dark-gray font-sans">
-                    Recover valuable materials and generate revenue through responsible recycling
-                  </p>
+                <div className="px-8 py-8">
+                  <OnboardingForm onSuccess={() => setIsSubmitted(true)} />
                 </div>
               </div>
 
-              {/* Form Card */}
-              <div className="bg-white p-12 rounded-lg border-2 border-light-gray shadow-sm">
-                <h2 className="text-3xl font-sans font-bold text-forest mb-2">
-                  Tell Us About Your Organization
-                </h2>
-                <p className="text-dark-gray font-sans mb-8">
-                  Please provide the following information to get started.
-                </p>
-
-                <OnboardingForm onSuccess={handleSuccess} />
-              </div>
-
-              {/* Trust indicators */}
-              <div className="mt-12 text-center">
-                <p className="text-dark-gray font-sans text-sm mb-4">
-                  Trusted by leading organizations in India
-                </p>
-                <div className="flex justify-center gap-6 flex-wrap">
-                  <div className="text-2xl">🏢</div>
-                  <div className="text-2xl">🎓</div>
-                  <div className="text-2xl">🏭</div>
-                  <div className="text-2xl">🤝</div>
-                </div>
-              </div>
+              {/* Trust note */}
+              <p className="text-center text-dark-gray/60 text-sm">
+                🔒 Your information is kept confidential and used only for pilot assessment purposes.
+              </p>
             </>
           )}
         </div>
       </main>
 
-      <footer className="bg-dark-gray text-parchment py-12 px-6">
-        <div className="max-w-7xl mx-auto text-center">
-          <p className="font-sans mb-2">© 2024 RESHA. All rights reserved.</p>
-          <p className="text-sm text-parchment/70 font-sans">
-            Reshaping Electronics Supply Chain for Humanity & the Environment
-          </p>
-        </div>
+      <footer style={{ background: '#1a1a1a', color: '#F5F0E8' }} className="py-10 px-6 text-center">
+        <p className="text-sm text-white/60">© 2025 RESHA — Reverence in Recycling. Pilot Stage | India</p>
       </footer>
     </>
   );

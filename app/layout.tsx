@@ -1,39 +1,31 @@
 import type { Metadata, Viewport } from 'next'
-import { Yeseva_One, Manrope } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
+import { DM_Serif_Display, Outfit } from 'next/font/google'
 import './globals.css'
 
-const yesevaOne = Yeseva_One({ 
+const dmSerifDisplay = DM_Serif_Display({
   weight: '400',
   subsets: ['latin'],
-  variable: '--font-display'
+  style: ['normal', 'italic'],
+  variable: '--font-display',
 })
 
-const manrope = Manrope({ 
+const outfit = Outfit({
   subsets: ['latin'],
-  variable: '--font-sans'
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-sans',
 })
 
 export const metadata: Metadata = {
-  title: 'RESHA - Circular Economy Network',
-  description: 'RESHA: Reshaping Electronics Supply Chain for Humanity & the Environment. A circular economy platform for sustainable electronics management.',
-  generator: 'v0.app',
+  title: 'RESHA — Reverence in Recycling',
+  description: 'India\'s first dignity-first circular infrastructure for ritual textile waste — transforming sacred offerings into traceable recycled fiber through on-site Moksha Shredders.',
+  keywords: ['circular economy', 'ritual textile waste', 'sacred cloth recycling', 'Moksha Shredder', 'India', 'sustainable', 'temple waste'],
   icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
+    icon: '/icon.svg',
+  },
+  openGraph: {
+    title: 'RESHA — Reverence in Recycling',
+    description: 'Transforming sacred ritual textile waste into traceable recycled fiber with dignity.',
+    type: 'website',
   },
 }
 
@@ -50,10 +42,9 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${yesevaOne.variable} ${manrope.variable} bg-parchment`}>
-      <body className="font-sans antialiased text-forest">
+    <html lang="en" className={`${dmSerifDisplay.variable} ${outfit.variable}`}>
+      <body style={{ backgroundColor: '#F5F0E8', color: '#1B5E3B' }}>
         {children}
-        {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
   )
