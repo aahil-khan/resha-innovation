@@ -3,17 +3,80 @@
 import { useState } from 'react';
 import { NETWORK_NODES } from '@/lib/constants';
 
-const NODE_POSITIONS: Record<string, { x: number; y: number }> = {
-  varanasi: { x: 320, y: 200 },
-  amritsar: { x: 200, y: 115 },
-  tirupati: { x: 290, y: 380 },
-  jaipur: { x: 220, y: 208 },
-  kanpur: { x: 305, y: 205 },
-  surat: { x: 195, y: 278 },
-  mumbai: { x: 185, y: 310 },
-  kolkata: { x: 368, y: 232 },
-  pune: { x: 200, y: 325 },
-};
+// Accurate equirectangular projection for India
+// viewBox: 0 0 520 560
+// x = (lng - 66.0) / 32.0 * 480 + 20
+// y = (38.0 - lat) / 32.0 * 520 + 20
+
+function lngToX(lng: number) { return ((lng - 66.0) / 32.0) * 480 + 20; }
+function latToY(lat: number) { return ((38.0 - lat) / 32.0) * 520 + 20; }
+
+// Accurate India outline — key boundary vertices traced from geography
+// Going clockwise from Rann of Kutch/Gujarat NW
+const INDIA_PATH = [
+  // Gujarat/Kutch NW
+  [68.5, 23.5], [69.0, 22.8], [69.5, 22.3],
+  // Saurashtra peninsula (going around the bulge)
+  [70.2, 21.0], [69.8, 22.0], [70.8, 22.5], [71.2, 21.5],
+  // Gujarat coast south
+  [72.0, 20.5], [72.5, 20.0], [72.8, 19.0],
+  // Maharashtra coast
+  [73.2, 17.5], [73.8, 16.0],
+  // Goa
+  [73.8, 15.5],
+  // Karnataka / Kerala coast
+  [74.8, 12.5], [75.5, 10.5],
+  // Cape Comorin
+  [77.5, 8.1],
+  // Tamil Nadu east coast
+  [79.5, 9.5], [80.0, 11.0], [80.2, 13.5],
+  // Andhra Pradesh
+  [80.5, 15.0], [80.8, 17.0], [82.0, 18.5],
+  // Orissa coast
+  [85.0, 19.5], [87.0, 20.0],
+  // West Bengal / Sundarbans
+  [88.5, 21.5], [89.0, 22.0],
+  // Bangladesh/Assam border area
+  [91.0, 22.5],
+  // Mizoram / Tripura
+  [92.5, 22.0],
+  // NE states going north
+  [93.5, 24.0], [94.0, 24.5],
+  // Arunachal far east
+  [97.0, 28.0], [96.5, 28.5],
+  // Coming back west along Himalayas/NE
+  [95.0, 27.5], [93.0, 27.0], [92.0, 27.0],
+  // Assam / Sikkim / Nepal border
+  [89.0, 27.5], [88.0, 27.0],
+  // Nepal border going west
+  [84.0, 27.5], [80.0, 30.5],
+  // Uttarakhand / HP border
+  [79.0, 31.0], [77.5, 31.5],
+  // Jammu
+  [76.0, 32.5], [74.8, 32.7],
+  // J&K border going NW
+  [74.0, 33.5], [73.5, 34.0], [72.5, 34.5],
+  // Back down Pakistan border
+  [71.5, 33.0], [70.5, 32.5], [70.0, 31.0],
+  [69.5, 28.0], [69.0, 27.0], [68.5, 24.5],
+  // Close back to start
+  [68.5, 23.5],
+].map(([lng, lat]) => [lngToX(lng), latToY(lat)]);
+
+const INDIA_D = 'M ' + INDIA_PATH.map(([x, y]) => `${x.toFixed(1)},${y.toFixed(1)}`).join(' L ') + ' Z';
+
+// City nodes with accurate coordinates
+const CITY_NODES = [
+  { id: 'varanasi',  lat: 25.32, lng: 82.97, city: 'Varanasi',  type: 'active' },
+  { id: 'amritsar',  lat: 31.62, lng: 74.88, city: 'Amritsar',  type: 'active' },
+  { id: 'tirupati',  lat: 13.63, lng: 79.42, city: 'Tirupati',  type: 'active' },
+  { id: 'jaipur',    lat: 26.91, lng: 75.79, city: 'Jaipur',    type: 'active' },
+  { id: 'kanpur',    lat: 26.45, lng: 80.33, city: 'Kanpur',    type: 'partner' },
+  { id: 'surat',     lat: 21.17, lng: 72.83, city: 'Surat',     type: 'partner' },
+  { id: 'mumbai',    lat: 19.08, lng: 72.88, city: 'Mumbai',    type: 'onboarding' },
+  { id: 'kolkata',   lat: 22.56, lng: 88.36, city: 'Kolkata',   type: 'onboarding' },
+  { id: 'pune',      lat: 18.52, lng: 73.86, city: 'Pune',      type: 'onboarding' },
+];
 
 const COLORS = {
   active: '#1B5E3B',
@@ -30,103 +93,79 @@ export function NetworkMap({ selectedNodeId, onNodeSelect }: NetworkMapProps) {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   return (
-    <div className="relative" style={{ background: '#FAF7F2', borderRadius: '12px', overflow: 'hidden', minHeight: '420px' }}>
-      <svg
-        viewBox="0 0 520 480"
-        className="w-full"
-        style={{ minHeight: '380px' }}
-      >
-        {/* India simplified outline */}
-        <path
-          d="M175 72 L190 60 L210 62 L235 58 L255 65 L272 60 L290 70 L308 74 L325 84 L342 94 L352 108 L360 124 L374 136 L370 150 L380 164 L385 178 L375 192 L382 208 L372 224 L368 242 L374 256 L365 272 L372 288 L360 305 L348 320 L336 335 L322 350 L310 365 L298 380 L286 394 L276 408 L268 420 L260 432 L252 438 L244 432 L240 418 L236 405 L232 392 L224 378 L212 362 L200 348 L190 335 L180 320 L173 306 L168 292 L163 278 L160 262 L162 248 L157 232 L153 218 L148 204 L150 188 L157 174 L150 158 L147 142 L154 126 L158 110 L168 96 L175 82 L175 72Z"
-          fill="#E8F5EE"
-          stroke="#1B5E3B"
-          strokeWidth="1.5"
-          opacity="0.7"
+    <div className="relative" style={{ background: '#FAF7F2', borderRadius: '12px', overflow: 'hidden' }}>
+      <svg viewBox="0 0 520 560" className="w-full" style={{ maxHeight: '460px' }}>
+        {/* India fill */}
+        <path d={INDIA_D} fill="#E8F5EE" stroke="#1B5E3B" strokeWidth="1.5" opacity="0.85"/>
+
+        {/* Dashed logistics lines: active sites to partners */}
+        {/* Varanasi → Kanpur */}
+        <line
+          x1={lngToX(82.97)} y1={latToY(25.32)}
+          x2={lngToX(80.33)} y2={latToY(26.45)}
+          stroke="#E87722" strokeWidth="1" strokeDasharray="4,4" opacity="0.5"
+        />
+        {/* Amritsar → Jaipur */}
+        <line
+          x1={lngToX(74.88)} y1={latToY(31.62)}
+          x2={lngToX(75.79)} y2={latToY(26.91)}
+          stroke="#E87722" strokeWidth="1" strokeDasharray="4,4" opacity="0.5"
+        />
+        {/* Tirupati → Surat (long route implied) */}
+        <line
+          x1={lngToX(79.42)} y1={latToY(13.63)}
+          x2={lngToX(72.83)} y2={latToY(21.17)}
+          stroke="#E87722" strokeWidth="1" strokeDasharray="4,4" opacity="0.4"
         />
 
-        {/* Connection lines between active sites and partners */}
-        <line x1="320" y1="200" x2="305" y2="205" stroke="#E87722" strokeWidth="1" strokeDasharray="4,4" opacity="0.5"/>
-        <line x1="200" y1="115" x2="195" y2="278" stroke="#E87722" strokeWidth="1" strokeDasharray="4,4" opacity="0.5"/>
-        <line x1="290" y1="380" x2="195" y2="278" stroke="#E87722" strokeWidth="1" strokeDasharray="4,4" opacity="0.5"/>
-
         {/* City nodes */}
-        {NETWORK_NODES.map((node) => {
-          const pos = NODE_POSITIONS[node.id];
-          if (!pos) return null;
-          const color = COLORS[node.type as keyof typeof COLORS] || '#4A4A4A';
+        {CITY_NODES.map((node) => {
+          const cx = lngToX(node.lng);
+          const cy = latToY(node.lat);
+          const color = COLORS[node.type as keyof typeof COLORS];
           const isSelected = selectedNodeId === node.id;
           const isHovered = hoveredId === node.id;
+          const r = isSelected || isHovered ? 8 : 6;
 
           return (
             <g
               key={node.id}
-              className="cursor-pointer"
               onClick={() => onNodeSelect(node.id)}
               onMouseEnter={() => setHoveredId(node.id)}
               onMouseLeave={() => setHoveredId(null)}
+              style={{ cursor: 'pointer' }}
             >
-              {/* Pulse ring */}
+              {/* Pulse ring for active sites */}
               {node.type === 'active' && (
-                <circle
-                  cx={pos.x}
-                  cy={pos.y}
-                  r="18"
-                  fill={color}
-                  opacity="0.12"
-                  style={{
-                    animation: 'pulse-dot 2.5s ease-in-out infinite',
-                  }}
-                />
+                <circle cx={cx} cy={cy} r="16" fill={color} opacity="0.1"
+                  style={{ animation: 'pulse-dot 2.5s ease-in-out infinite' }}/>
               )}
-
               {/* Selection ring */}
               {isSelected && (
-                <circle
-                  cx={pos.x}
-                  cy={pos.y}
-                  r="14"
-                  fill="none"
-                  stroke={color}
-                  strokeWidth="2"
-                  opacity="0.7"
-                />
+                <circle cx={cx} cy={cy} r={r + 5} fill="none" stroke={color} strokeWidth="1.5" opacity="0.6"/>
               )}
-
-              {/* Main dot */}
-              <circle
-                cx={pos.x}
-                cy={pos.y}
-                r={isSelected || isHovered ? 9 : 7}
-                fill={color}
-                stroke="white"
-                strokeWidth="2"
-                style={{ transition: 'r 0.2s ease' }}
-              />
-
-              {/* Dashed border for onboarding */}
+              {/* Dashed ring for onboarding */}
               {node.type === 'onboarding' && (
-                <circle
-                  cx={pos.x}
-                  cy={pos.y}
-                  r="11"
-                  fill="none"
-                  stroke={color}
-                  strokeWidth="1.5"
-                  strokeDasharray="3,3"
-                  opacity="0.6"
+                <circle cx={cx} cy={cy} r={r + 5} fill="none" stroke={color} strokeWidth="1.2" strokeDasharray="3,3" opacity="0.5"/>
+              )}
+              {/* Main dot */}
+              <circle cx={cx} cy={cy} r={r} fill={color} stroke="white" strokeWidth="1.8"
+                style={{ transition: 'r 0.15s ease' }}/>
+
+              {/* Pin point (downward triangle) */}
+              {node.type === 'active' && (
+                <polygon
+                  points={`${cx},${cy + r + 5} ${cx - 3},${cy + r} ${cx + 3},${cy + r}`}
+                  fill={color}
                 />
               )}
 
-              {/* Label */}
+              {/* City label */}
               <text
-                x={pos.x + 13}
-                y={pos.y + 4}
-                fontSize="10"
-                fill="#1B5E3B"
-                fontFamily="Outfit, sans-serif"
-                fontWeight="600"
-                opacity={isHovered || isSelected ? 1 : 0.75}
+                x={cx + 11} y={cy + 4}
+                fontSize="9.5" fill="#1B5E3B"
+                fontFamily="Outfit, sans-serif" fontWeight="600"
+                opacity={isHovered || isSelected ? 1 : 0.7}
               >
                 {node.city}
               </text>
@@ -136,7 +175,7 @@ export function NetworkMap({ selectedNodeId, onNodeSelect }: NetworkMapProps) {
       </svg>
 
       {/* Legend */}
-      <div className="absolute bottom-3 left-3 flex flex-col gap-1.5">
+      <div className="absolute bottom-3 left-3 flex flex-col gap-1.5 bg-white/80 backdrop-blur-sm rounded-lg px-3 py-2">
         {[
           { color: '#1B5E3B', label: 'Active Pilot' },
           { color: '#F5A623', label: 'Processing Partner' },

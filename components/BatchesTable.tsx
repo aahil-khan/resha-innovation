@@ -31,7 +31,7 @@ function BatchModal({ batch, onClose }: { batch: Batch; onClose: () => void }) {
             onClick={onClose}
             className="w-8 h-8 rounded-full flex items-center justify-center text-dark-gray hover:bg-light-gray transition-colors"
           >
-            ✕
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
           </button>
         </div>
 
@@ -59,7 +59,10 @@ function BatchModal({ batch, onClose }: { batch: Batch; onClose: () => void }) {
             >
               {batch.status}
             </div>
-            <div className="verified-badge text-xs">✓ RESHA Verified</div>
+            <div className="verified-badge text-xs flex items-center gap-1">
+              <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              RESHA Verified
+            </div>
           </div>
         </div>
       </div>

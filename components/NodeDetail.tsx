@@ -23,7 +23,13 @@ export function NodeDetail({ nodeId }: NodeDetailProps) {
         className="rounded-2xl border border-dashed border-light-gray p-8 h-full flex flex-col items-center justify-center text-center min-h-[300px]"
         style={{ background: '#FAF7F2' }}
       >
-        <div className="text-4xl mb-4 opacity-40">🗺️</div>
+        <div className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4 opacity-30" style={{ background: 'rgba(27,94,59,0.1)' }}>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1B5E3B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/>
+              <line x1="9" x2="9" y1="3" y2="18"/>
+              <line x1="15" x2="15" y1="6" y2="21"/>
+            </svg>
+          </div>
         <p className="text-forest font-semibold mb-2" style={{ fontFamily: 'DM Serif Display, serif' }}>
           Select a site
         </p>

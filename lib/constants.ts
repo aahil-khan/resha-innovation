@@ -178,42 +178,42 @@ export const NETWORK_METRICS = [
 export const RECENT_ACTIVITIES = [
   {
     id: 1,
-    icon: '✅',
+    icon: 'Check',
     text: 'Batch RSH-VNS-0151 certified',
     detail: 'Kashi Vishwanath Temple Trust, Varanasi',
     timestamp: '2 hours ago',
   },
   {
     id: 2,
-    icon: '🔄',
+    icon: 'Refresh',
     text: 'Pickup completed',
     detail: 'Golden Temple, Amritsar',
     timestamp: '1 day ago',
   },
   {
     id: 3,
-    icon: '📋',
+    icon: 'Clipboard',
     text: 'New onboarding request',
     detail: 'ISKCON Mumbai — pending review',
     timestamp: '2 days ago',
   },
   {
     id: 4,
-    icon: '⚙️',
+    icon: 'Settings',
     text: 'Shredder MS-014 installed',
     detail: 'Tirupati Devasthanam, Tirupati',
     timestamp: '5 days ago',
   },
   {
     id: 5,
-    icon: '📦',
+    icon: 'Package',
     text: 'EcoFiber received 340 kg batch',
     detail: 'Processed → recycled cotton fiber',
     timestamp: '6 days ago',
   },
   {
     id: 6,
-    icon: '🌿',
+    icon: 'Leaf',
     text: 'ESG report published',
     detail: 'Q1 2025 — 12,400 kg diverted',
     timestamp: '1 week ago',
@@ -291,17 +291,17 @@ export const HOME_SECTIONS = {
     ],
     cards: [
       {
-        icon: '🙏',
+        icon: 'Hands',
         title: 'Cultural Dilemma',
         description: 'Sacred offerings — silks, cotton, marigold-dyed cloth — cannot be discarded in ordinary waste streams without violating religious sanctity.',
       },
       {
-        icon: '📊',
+        icon: 'BarChart',
         title: 'Scale of Crisis',
         description: 'Tens of millions of devotees generate ritual textile waste daily. Temples lack infrastructure for dignified, systematic disposal.',
       },
       {
-        icon: '🌱',
+        icon: 'Sprout',
         title: 'Ecological Consequence',
         description: 'Ritual cloth immersed in rivers or burned openly creates water contamination, dye pollution, and unmanaged textile landfill.',
       },
@@ -311,27 +311,27 @@ export const HOME_SECTIONS = {
     title: 'The Dignity-First Approach',
     steps: [
       {
-        icon: '🏛️',
+        icon: 'Temple',
         name: 'Institution',
         description: 'Temple or religious institution generates ritual textile waste from daily offerings and ceremonies.',
       },
       {
-        icon: '📦',
+        icon: 'Package',
         name: 'Collection',
         description: 'Dedicated, consecrated collection point established on-site with sacred vessel branding.',
       },
       {
-        icon: '⚙️',
+        icon: 'Settings',
         name: 'Moksha Shredder',
         description: 'On-premise shredding processes cloth within consecrated grounds — fabric never leaves as intact.',
       },
       {
-        icon: '🔄',
+        icon: 'Refresh',
         name: 'Processing',
         description: 'Shredded fiber routed to RESHA-certified processing partners with batch traceability.',
       },
       {
-        icon: '🌿',
+        icon: 'Leaf',
         name: 'New Life',
         description: 'Converted into recycled fiber, ESG-tracked sustainable materials, and circular products.',
       },

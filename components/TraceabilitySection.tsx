@@ -51,7 +51,10 @@ export function TraceabilitySection() {
                 BATCH ID: {batch.id}
               </span>
             </div>
-            <div className="verified-badge">✓ Verified by RESHA Network</div>
+            <div className="verified-badge flex items-center gap-1">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Verified by RESHA Network
+            </div>
           </div>
 
           {/* Card body */}
@@ -82,7 +85,9 @@ export function TraceabilitySection() {
             style={{ background: 'rgba(27,94,59,0.06)', borderTop: '1px solid #E8E5E0' }}
           >
             <div className="flex items-center gap-2">
-              <span className="text-forest text-lg">✅</span>
+              <div className="flex items-center justify-center w-6 h-6 rounded-full" style={{ background: 'rgba(27,94,59,0.15)' }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1B5E3B" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
               <span className="text-forest font-bold text-sm">Status: {batch.status}</span>
             </div>
           </div>
