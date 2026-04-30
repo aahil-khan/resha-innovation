@@ -285,8 +285,8 @@ export const HOME_SECTIONS = {
     title: 'The Holy Waste Paradox',
     description: 'Devotees across India cannot discard sacred cloth in ordinary bins — it is a spiritual crisis, not just an environmental one. The sanctity of offerings demands a dignified, consecrated path to transformation.',
     stats: [
-      { number: '800M+', label: 'Tonnes of ritual offerings generated annually across India' },
-      { number: '7.79M', label: 'Tonnes of India\'s annual unmanaged textile waste' },
+      { number: '15M+', label: 'Tonnes of ritual offerings generated annually across India' },
+      { number: '7.07M', label: 'Tonnes of India\'s annual unmanaged textile waste' },
       { number: '3.4%', label: 'Cloth waste share at major temple sites like Thirunallar' },
     ],
     cards: [
